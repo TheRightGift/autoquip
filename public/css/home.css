@@ -1,0 +1,182 @@
+body {
+    background-color: #FCFCFC;
+}
+nav {
+    background-color: #232920;
+}
+
+.col .row.bannerHeading {
+    width: 60%;
+    margin: 0 auto;
+    padding: 1vw 0;
+}
+#homeBanner {
+    height: 100vh;
+    background-image: url('../img/bannerBackgraound.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#homeBanner h1 {
+    font-size: 2.4rem;
+    margin: 0;
+}
+#homeBanner #search .prdtSearch {
+    display: flex;
+}
+#homeBanner #search input {
+    height: 3rem;
+    width: 80%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0.7rem;
+    border-bottom-left-radius: 0.7rem;
+    outline: none;
+    border: thin solid #f2f2f2;
+    text-align: center;
+}
+#homeBanner #search button.btn.prdtSearchBtn {
+    box-shadow: unset;
+    height: 3rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.7rem;
+    border-bottom-right-radius: 0.7rem;
+}
+#homeBanner #search select {
+    border-radius: 0.7rem;
+}
+
+
+#popularPrdt h2.sectionHead::after,
+#qualiyParts h2.sectionHead::after,
+#whoWeAre h2.sectionHead::after,
+#reliableSolution h2.sectionHead::after {
+    width: 8rem;
+}
+/* #qualiyParts h2.sectionHead::after {
+    width: 8rem;
+} */
+
+#popularPrdt .viewAll i {
+    font-size: 1rem;
+    position: relative;
+    top: 0.41vh;
+}
+#popularPrdt .viewAll p {
+    position: relative;
+    bottom: -6vh;
+}
+#popularPrdt .viewAll a {
+    color: var(--black);
+}
+#popularPrdt figure {
+    margin: 0;
+}
+#popularPrdt figcaption {
+    font-size: 0.85rem;
+}
+
+#qualiyParts {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10vh 0;
+    background-color: var(--white);
+}
+.qualityPartDesc {
+    height: 57vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* .qualityPartsImg .col {
+    padding: 0 !important;
+} */
+.qualityPartsImg .col:first-child {
+    padding-right: 0.25rem !important;
+}
+.qualityPartsImg .col:nth-child(2) {
+    padding-left: 0.25rem !important;
+}
+.qualityPartsImg .col:nth-child(3) {
+    padding-right: 0.25rem !important;
+}
+.qualityPartsImg .col:nth-child(4) {
+    padding-left: 0.25rem !important;
+}
+
+.whoWeAreContainer {
+    display: flex;
+}
+.row .col.whoWeAreDesc {
+    padding: 6rem 7rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+.row .col.whoWeAreImgContainer {
+    padding: 0;
+}
+
+#reliableSolution .background,
+#reliableSolution .reliableSolutionContent {
+    position: relative;
+}
+#reliableSolution .background {
+    z-index: 2;
+    display: flex;
+    height: 85vh;
+}
+#reliableSolution .reliableSolutionContent {
+    z-index: 3;
+    margin-top: -70vh;
+}
+.coloredBackground {
+    background-color: #808000;
+}
+.col35 {
+    width: 35%;
+}
+.col65 {
+    width: 65%;
+}
+.reliableSolutionContent div:last-child {
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.reliableSolutionContent p {
+    margin: 0;
+}
+
+#faq {
+    margin-top: 13vh;
+    padding: 8vh 0;
+    background-color: var(--white);
+}
+#faq .container {
+    width: 50%;
+}
+#faq h2 {
+    font-size: 2rem;    
+}
+#faq h2 {
+    margin-bottom: 8vh;
+}
+#faq .collapsible {
+    box-shadow: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+#faq .collapsible .collapsible-header {
+    justify-content: space-between;
+}

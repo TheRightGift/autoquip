@@ -1,0 +1,267 @@
+:root {
+    --primary: #D4D416;
+    --secondary: #808000;
+    --black: #000000;
+    --white: #ffffff;
+}
+::-webkit-scrollbar {
+    width: 5px;
+} /* this targets the default scrollbar (compulsory) */
+::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 7px rgba(0,0,0,0.8);*/
+    background-color: var(--primary);
+    /*border-radius: 8px;*/
+} /* the new scrollbar will have a flat appearance with the set background color */
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 100px var(--primary);
+    background-color: var(--primary);
+    /*border-radius: 8px;*/
+} /* this will style the thumb, ignoring the track */
+
+::-webkit-scrollbar-button {
+    height: 0;
+    /* background-color: rgba(0,151,0,1);*/
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+::-webkit-scrollbar-corner {
+    background-color: var(--black);
+} /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+::-webkit-scrollbar-track-piece {
+    background-color: var(--white);
+}
+::-webkit-scrollbar-button:horizontal {
+    width: 5px;
+    /* Select the down or left scroll button when it's being hovered by the mouse */
+}
+
+html,
+body {
+    width: 100%;
+    height: 100vh;
+    font-size: 17px;
+}
+nav {
+    /* background-color: #232920; */
+    border: thin solid #ffffff;
+    height: 70px;
+    line-height: 70px;
+}
+.centre {
+    text-align: center;
+}
+/* Misc */
+.hoverable,
+.cursor {
+    cursor: pointer;
+}
+.errorNotifier {
+    background-color: red;
+    color: var(--white);
+}
+.successNotifier {
+    background-color: green;
+    color: var(--white);
+}
+.noPaddingLeft {
+    padding-left: 0 !important;
+}
+.paddingBottom-2 {
+    padding-bottom: 2vh !important;
+}
+.noPaddingRight {
+    padding-right: 0 !important;
+}
+.noMarginBottom {
+    margin-bottom: 0 !important;
+}
+.noMarginTop {
+    margin-top: 0 !important;
+}
+.marginTop-5 {
+    margin-top: 5vh;
+}
+.marginBottom-5 {
+    margin-bottom: 5vh;
+}
+.marginTop-3 {
+    margin-top: 3vh;
+}
+.marginBottom-3 {
+    margin-bottom: 3vh;
+}
+.marginTop-10 {
+    margin-top: 10vh;
+}
+.marginTop-15 {
+    margin-top: 15vh;
+}
+.marginBtm-15 {
+    margin-bottom: 15vh;
+}
+.marginTop-2 {
+    margin-top: 2vh !important;
+}
+.verticalMargin-2 {
+    margin: 2vw 0;
+}
+.verticalMargin-1 {
+    margin: 1vw 0;
+}
+.verticalMargin-5 {
+    margin: 5vw 0;
+}
+.padding-5 {
+    padding: 5px;
+}
+.vHMargin-5, .row.vHMargin-5 {
+    margin: 3vh 5vw;
+}
+.primary {
+    background-color: var(--primary);
+    color: var(--white);
+}
+.inlineIcon {
+    font-size: 0.8rem !important;
+}
+.gutter1 {
+    margin-right: 1vw;
+}
+.gutterTop-10 {
+    margin-top: 10vh;
+}
+.noVertMargin {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+.marginRight1 {
+    margin-right: 1vw;
+}
+.multiLine {
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.btn {
+    background-color: var(--primary) !important;
+    color: #000000;
+    box-shadow: none !important;
+    font-size: 0.65rem;
+}
+.primaryIcon {
+    color: var(--primary);
+}
+
+
+/* GUEST PAGES SHARED STYLES */
+h2.sectionHead {
+    display: inline;
+    font-size: 2rem;
+    padding-right: 3rem;
+    border-top: 3px solid var(--primary);
+}
+
+h2.sectionHead::after {
+    content: '';
+    display: block;
+    position: absolute;
+    margin-top: 1vh;    
+    border-bottom: 3px solid var(--primary);
+}
+/* Navigation */
+nav {
+    padding: 0 3vw;
+}
+.navBarSearchLi {
+    height: 70px;
+    line-height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.nav-wrapper .navBarSearchLi .input-field {
+    border: thin solid #FBFBF9;
+    height: 37px;
+    line-height: 37px;
+    border-radius: 0.5rem;
+}
+.nav-wrapper .input-field input[type=search].navBarSearch, .nav-wrapper .input-field input[type=search].navBarSearch:focus {
+    margin: 0;
+    padding: 0;
+    width: calc(100% - 3rem);    
+    padding-left: 1vw;
+    border: unset;
+    background-color: transparent;
+    outline: none;
+    height: 37px;
+    line-height: 37px;
+}
+.input-field input[type=search] ~ .mdi-navigation-close, .input-field input[type=search] ~ .material-icons {
+    right: 0.5vw;
+    font-size: 1.2rem;
+    height: 37px;
+    line-height: 37px;
+}
+
+/* Enquiry */
+#enquiry {
+    margin-top: -15vh;
+}
+#enquiry .container {
+    width: 50%;
+}
+#enquiry h2 {
+    font-size: 2rem;  
+    margin-bottom: 4vh;    
+}
+.enquiryContainer {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 4vh 0;
+    z-index: 5;
+    position: relative;
+}
+
+/* Footer */
+footer.page-footer {
+    background-image: url('../img/footerBackground.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-size: 0.85rem;
+    margin-top: -17vh;
+    padding-top: 30vh;
+}
+.page-footer .footer-copyright {
+    border: thin solid var(--white);
+    font-size: 0.6rem;
+    padding: 5px 10px;
+    min-height: 20px;
+    text-align: center;
+}
+
+/* Media Query on Medium Device */
+@media screen and (max-width: 992px) and (min-width: 640px) {
+    
+}
+
+/* Media Query on small device */
+@media screen and (max-width: 640px) {
+    
+}
+
+
+/* Navs */
+
+/* Media Query for Medium Devices */
+@media screen and (max-width: 992px) and (min-width: 640px) {
+
+}
+
+
+
+/* Media Query for Small Devices */
+@media screen and (max-width: 640px) {
+    
+}
