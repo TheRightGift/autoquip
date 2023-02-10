@@ -1,5 +1,5 @@
 <template>
-    <HeaderComponent/>
+    <HeaderComponent :type="'noSubHeader'"></HeaderComponent>
     <div class="row" id="homeBanner">
         <div class="col l6 offset-l3">
             <div class="row bannerHeading">

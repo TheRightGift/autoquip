@@ -1,6 +1,12 @@
 nav {
     background-color: #515510;
 }
+ul.browser-default {
+    list-style-image: url('../img/rectBullet.png');
+}
+ul.browser-default li {
+    margin-bottom: 0.6rem;
+}
 
 #productsHeader {
     padding: 10vh 0;
@@ -43,7 +49,8 @@ nav {
 
 #nuPrdts h2.sectionHead::after,
 #allPrdts h2.sectionHead::after,
-#equipments h2.sectionHead::after{
+#equipments h2.sectionHead::after,
+#relatedPrdts h2.sectionHead::after{
     width: 8rem;
 }
 #parts h2.sectionHead::after {
@@ -53,7 +60,8 @@ nav {
 #nuPrdts .viewAll i,
 #allPrdts .viewAll i,
 #parts .viewAll i,
-#equipments .viewAll i {
+#equipments .viewAll i,
+#relatedPrdts .viewAll i{
     font-size: 1rem;
     position: relative;
     top: 0.41vh;
@@ -65,22 +73,48 @@ nav {
 #nuPrdts .viewAll a,
 #allPrdts .viewAll a,
 #parts .viewAll a,
-#equipments .viewAll a {
+#equipments .viewAll a,
+#relatedPrdts .viewAll a {
     color: var(--black);
 }
 #nuPrdts figure,
 #allPrdts figure,
 #parts figure,
-#equipments figure {
+#equipments figure,
+#relatedPrdts figure {
     margin: 0;
 }
 #nuPrdts figcaption,
 #allPrdts figcaption,
 #parts figcaption,
-#equipments figcaption {
+#equipments figcaption,
+#relatedPrdts figcaption {
     font-size: 0.85rem;
 }
 
-#equipments {
+#equipments, #relatedPrdts {
     padding-bottom: 15vh;
+}
+
+
+/* SINGLE PRODUCTS */
+#productDetails .productMainImage img {
+    width: 100%;
+}
+#productDetails .productDescription h2{
+    font-size: 2.1rem;
+}
+#productDetails .productDescription h3{
+    font-size: 1.7rem;
+}
+#productDetails .productDescription h4{
+    font-size: 1.2rem;
+}
+#productDetails .productActionBtns {
+    display: flex;
+    justify-content: space-between;
+}
+#productDetails .productActionBtns .btn  {
+    padding-left: 2rem;
+    padding-right: 2rem;
 }

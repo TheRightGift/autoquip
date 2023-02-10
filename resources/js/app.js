@@ -18,10 +18,12 @@ const app = createApp({});
 /**GUEST COMPONENTS */
 import HomeComponent from './components/HomeComponent.vue';
 import ProductsComponent from './components/ProductsComponent.vue';
+import SingleProductComponent from './components/SingleProductComponent.vue';
 
 // Guest components registration
 app.component('home-component', HomeComponent);
 app.component('products-component', ProductsComponent);
+app.component('single-products-component', SingleProductComponent);
 
 
 app.mount('#app');
