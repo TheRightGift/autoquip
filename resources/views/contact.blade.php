@@ -3,18 +3,18 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{env('APP_NAME')}} - Product</title>
+        <title>{{env('APP_NAME')}} - Contact Us</title>
 
         <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/autoquip.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/products.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/contacts.css') }}">
         <link rel="stylesheet" href="{{ asset('fonts/material-icons.css') }}">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body>
         <div id="app">       
-            <single-products-component></single-products-component>
+            <contacts-component></contacts-component>
         </div>
         
         <script src="{{ asset('js/app.js') }}"></script>

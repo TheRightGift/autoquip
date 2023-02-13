@@ -19,11 +19,14 @@ const app = createApp({});
 import HomeComponent from './components/HomeComponent.vue';
 import ProductsComponent from './components/ProductsComponent.vue';
 import SingleProductComponent from './components/SingleProductComponent.vue';
+import RepairsComponent from './components/RepairsComponent.vue';
+import ContactsComponent from './components/ContactsComponent.vue';
 
 // Guest components registration
 app.component('home-component', HomeComponent);
 app.component('products-component', ProductsComponent);
 app.component('single-products-component', SingleProductComponent);
-
+app.component('repairs-component', RepairsComponent);
+app.component('contacts-component', ContactsComponent);
 
 app.mount('#app');

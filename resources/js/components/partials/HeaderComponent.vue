@@ -3,14 +3,14 @@
         <div class="nav-wrapper">
             <a href="#" class="brand-logo">Autoquip, LLC</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/products">Products</a></li>
                 <li><a href="#">Enquiry</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/contact">Contact</a></li>
                 <li><a href="#">Support</a></li>
-                <li><a href="collapsible.html"><i class="material-icons primaryIcon">shopping_cart</i></a></li>
+                <li><a href="#"><i class="material-icons primaryIcon">shopping_cart</i></a></li>
                 <li><a href="#">Login</a></li>
-                <li><a class="waves-effect waves-light btn">Sign Up</a></li>
+                <li><a href="#" class="waves-effect waves-light btn">Sign Up</a></li>
             </ul>
         </div>
     </nav>

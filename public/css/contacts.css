@@ -1,0 +1,81 @@
+nav {
+    background-color: #515510;
+}
+#productsHeader {
+    padding: 10vh 0;
+    /* height: 50vh; */
+    background-color: var(--secondary);
+}
+#productsHeader h1 {
+    font-size: 3rem;
+    margin-top: 0;
+}
+
+#productsHeader #search .prdtSearch {
+    display: flex;
+}
+#productsHeader #search input {
+    height: 3rem;
+    width: 80%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0.7rem;
+    border-bottom-left-radius: 0.7rem;
+    outline: none;
+    border: thin solid #f2f2f2;
+    text-align: center;
+}
+#productsHeader #search button.btn.prdtSearchBtn {
+    box-shadow: unset;
+    height: 3rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.7rem;
+    border-bottom-right-radius: 0.7rem;
+}
+#productsHeader .row #search .col.l3 {
+    padding-left: 0;
+}
+#productsHeader #search select {
+    border-radius: 0.7rem;
+}
+
+.mailIcon {
+    background-color: #DAE6E9;
+    padding: 2vh;
+    border-radius: 5px;
+    color: #194D5A;
+}
+.callIcon {
+    background-color: #F1D1AC;
+    padding: 2vh;
+    border-radius: 5px;
+    color: var(--secondary);
+}
+.faxIcon {
+    background-color: #AA8DD8;
+    padding: 2vh;
+    border-radius: 5px;
+    color: #3F2E5A;
+}
+.addressIcon {
+    background-color: #F4ABBA;
+    padding: 2vh;
+    border-radius: 5px;
+    color: #751E30;
+}
+.contactTitle {
+    color: #555546;
+}
+.contactDetails {
+    padding-bottom: 20vh;
+}
+.contactDetails .contactCard{
+    border-radius: 5px;
+    box-shadow: 0 0 10px #7b7b7a;
+    display: flex;
+    flex-direction: column;
+    width: 67%;
+    margin: 0 auto;
+    padding: 4vh 1vw;
+}
