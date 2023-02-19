@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,6 +11,18 @@ use App\Http\Services\Auth\AuthService;
 
 class AuthController extends Controller
 {
+    public function getstarted(){
+        return view('auth.getstarted');
+    }
+
+    public function signin(){
+        return view('auth.signin');
+    }
+    
+    public function forgotpassword(){
+        return view('auth.forgotpassword');
+    }
+
     public function login(Request $request, EmailAuthService $emailAuthService)
     {
         $user = $emailAuthService->login($request);

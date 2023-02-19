@@ -1,5 +1,5 @@
 :root {
-    --primary: #FAFA33;
+    --primary: #CCE00E;
     --secondary: #808000;
     --black: #000000;
     --white: #ffffff;
@@ -65,8 +65,14 @@ nav {
 .noPaddingLeft {
     padding-left: 0 !important;
 }
+.paddingTop-15 {
+    padding-top: 15vh !important;
+}
 .paddingBottom-2 {
     padding-bottom: 2vh !important;
+}
+.paddingBottom-15 {
+    padding-bottom: 15vh !important;
 }
 .noPaddingRight {
     padding-right: 0 !important;
@@ -136,6 +142,9 @@ nav {
 .marginRight1 {
     margin-right: 1vw;
 }
+.marginRight3 {
+    margin-right: 3vw;
+}
 .multiLine {
     display: -webkit-box;
     max-width: 100%;
@@ -145,6 +154,15 @@ nav {
 }
 .btn {
     background-color: var(--primary) !important;
+    color: #000000;
+    box-shadow: none !important;
+    font-size: 0.65rem;
+    height: 6.5vh;
+    line-height: 6.5vh;
+}
+.btn.btnBorder {
+    border: thin solid var(--primary) !important;
+    background-color: var(--white) !important;
     color: #000000;
     box-shadow: none !important;
     font-size: 0.65rem;

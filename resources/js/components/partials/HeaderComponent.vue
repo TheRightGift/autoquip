@@ -20,16 +20,11 @@
         props: {
             // type: String,
         },
-        data() {
-            return {};
-        },
         props: {},
         data() {
             return {};
         },
-        mounted() {
-            console.log(this.type)
-        },
+        mounted() {},
         methods: {},
     };
 </script>

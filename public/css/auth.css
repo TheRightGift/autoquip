@@ -1,0 +1,52 @@
+nav {
+    background-color: #515510;
+}
+
+#getStarted h1,
+#signIn h1 {
+    font-size: 3rem;
+    margin-top: 15vh;
+    margin-bottom: 0;
+}
+
+#getStartedForm h2,
+#signInForm h2,
+#forgotPassForm h2 {
+    font-size: 2rem;
+}
+#getStartedForm .card .card-content,
+#signInForm .card .card-content {
+    padding: 4vw;
+}
+
+#forgotPassForm .card .card-content {
+    padding: 4vw 13vw;
+}
+
+#getStartedForm .getStartedFormWrapper input,
+#signInForm .signInFormWrapper input,
+#forgotPassForm .forgotPassFormWrapper input {
+    width: 100%;
+    height: 8vh;
+    border: thin solid var(--secondary);
+    border-radius: 1vh;
+    padding: 1vh 1vw;
+}
+#forgotPassForm .forgotPassFormWrapper .input-field>label {
+    position: static;
+}
+#signInForm .signInFormWrapper a {
+    color: #734706;
+}
+.formText, #signInForm .signInFormWrapper [type="checkbox"]+span:not(.lever) {
+    font-size: 0.8rem;
+}
+
+#fPassmodal.modal {
+    width: 40%;
+    padding: 4vw 8vw;
+}
+
+.slantIcon {
+    transform: rotate(-45deg) !important;
+}
