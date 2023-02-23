@@ -52,43 +52,30 @@
                     </p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col l3">
+
+            <div class="row" v-if="loadingProducts">
+                <div class="col l12">
+                    <div class="progress">
+                        <div class="indeterminate"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" v-else>
+                <div class="col l12" v-if="fourProducts === null">
+                    <p class="center-align">
+                        <i><small>No products yet. Check back in few hours.</small></i>
+                    </p>
+                </div>
+                <div class="col l3" v-for="prdt in fourProducts" v-else>
                     <figure>
-                        <img :src="'./img/semiConductorPlate.png'" class="responsive-img" alt="Semi Conductor Plate">
+                        <img :src="'./img/'+prdt.images[0].url" class="responsive-img" alt="Semi Conductor Plate">
                         <figcaption>
-                            Semiconductor Plate<br/>
-                            AC-KVA445-B1
+                            {{prdt.title}}<br/>
+                            {{prdt.code}}
                         </figcaption>
                     </figure>
                 </div>
-                <div class="col l3">
-                    <figure>
-                        <img :src="'./img/autoPartsandCables.png'" class="responsive-img" alt="Auto Parts &amp; Cable">
-                        <figcaption>
-                            Auto Parts &amp; Cable<br/>
-                            AC-KVA445-B1
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col l3">
-                    <figure>
-                        <img :src="'./img/SemiconductorPlate2.png'" class="responsive-img" alt="Semi Conductor Plate">
-                        <figcaption>
-                            Semiconductor Plate<br/>
-                            AC-KVA445-B1
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col l3">
-                    <figure>
-                        <img :src="'./img/autoParts.png'" class="responsive-img" alt="Auto Parts &amp; Cable">
-                        <figcaption>
-                            Auto Parts &amp; Cable<br/>
-                            AC-KVA445-B1
-                        </figcaption>
-                    </figure>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -248,9 +235,32 @@
         },
         props: {},
         data() {
-            return {};
+            return {
+                loadingProducts: true,
+                allProducts: null,
+                fourProducts: null
+            };
         },
-        mounted() {},
-        methods: {},
+        mounted() {
+            this.getAllProducts();
+        },
+        methods: {
+            getAllProducts(){
+                axios
+                .get(`/api/products`)
+                .then((res) => {
+                    if(res.data.status === 200){
+                        this.allProducts = res.data.products;
+                        this.fourProducts = res.data.products.slice(0, 4);
+                    } else {
+
+                    }
+                    this.loadingProducts = false;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            }
+        },
     };
 </script>

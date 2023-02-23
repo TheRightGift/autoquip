@@ -8,10 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
 
-use App\Notifications\MailOTP;
-
 use App\Models\User;
-use App\Models\Tenant;
 use App\Models\Verifier;
 
 use Carbon\Carbon;
@@ -57,16 +54,11 @@ class AuthService {
     protected function regDataToValidate(Request $request)
 	{
 		$validator = Validator::make($request->all(), [
-			'firstname' => 'required',
-            'lastname' => 'required',
-            // 'othername' => 'nullable',
-            'zipcode' => 'required',
+			'name' => 'required',
             'phone' => 'required|unique:users',
             'email' => 'email|required|unique:users',
-            'password' => 'required',
-            'title_id' => 'required',
-            'city_id' => 'required',
-            'gender' => 'required'
+            'password' => 'required|confirmed|min:8',
+            'role' => 'required'
 		]);
         return $validator;
     }
@@ -78,11 +70,11 @@ class AuthService {
         ]);        
 
         if (!auth()->attempt($loginData)) {
-            return ['status' => 404, 'error' => 'Invalid Credentials'];
+            return ['status' => 501, 'error' => 'Invalid Credentials'];
         }
         $accessToken = auth()->user()->createToken('accessToken')->accessToken;
         $user = User::find(auth()->user()->id);
-        $user->visits = $user->visits + 1;
+        // $user->visits = $user->visits + 1;
         $user->accessToken = $accessToken;
         $user->save();
         return ['status' => 200, 'user' => auth()->user(), 'access_token' => $accessToken];

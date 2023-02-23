@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     public function index(){
@@ -26,5 +28,13 @@ class HomeController extends Controller
 
     public function warehouse(){
         return view('warehouse');
+    }
+
+    public function isLoggedIn(){
+        if (Auth::user()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

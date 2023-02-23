@@ -25,4 +25,13 @@ Route::prefix('auth')->group(function () {
     Route::get('/getstarted', [App\Http\Controllers\Auth\AuthController::class, 'getstarted'])->name('getstarted');
     Route::get('/signin', [App\Http\Controllers\Auth\AuthController::class, 'signin'])->name('signin');
     Route::get('/forgotpassword', [App\Http\Controllers\Auth\AuthController::class, 'forgotpassword'])->name('forgotpassword');
+
+    Route::post('/register', [App\Http\Controllers\Auth\AuthController::class, 'register'])->name('register');
+    Route::post('/login', [App\Http\Controllers\Auth\AuthController::class, 'login'])->name('login');
+    Route::post('/logout', [App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout');
 });
+
+// Dashboard
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/isLoggedIn', [App\Http\Controllers\HomeController::class, 'isLoggedIn'])->name('isLoggedIn');
+// 

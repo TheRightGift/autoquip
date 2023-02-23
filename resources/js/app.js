@@ -27,6 +27,7 @@ import ContactsComponent from './components/ContactsComponent.vue';
 import GetstartedComponent from './components/auth/GetstartedComponent.vue';
 import SigninComponent from './components/auth/SigninComponent.vue';
 import ForgotPasswordComponent from './components/auth/ForgotPasswordComponent.vue';
+import DashboardComponent from './components/auth/DashboardComponent.vue';
 
 // Guest components registration
 app.component('home-component', HomeComponent);
@@ -39,6 +40,7 @@ app.component('contacts-component', ContactsComponent);
 app.component('get-started-component', GetstartedComponent);
 app.component('signin-component', SigninComponent);
 app.component('forgot-password-component', ForgotPasswordComponent);
-
+app.component('dashboard-component', DashboardComponent);
+// 
 
 app.mount('#app');

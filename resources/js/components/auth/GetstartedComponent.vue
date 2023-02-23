@@ -16,7 +16,7 @@
                                 <label for="name">Name</label>
                             </div>
                             <div class="input-field col l8">
-                                <input id="name" type="text" class="browser-default">
+                                <input id="name" v-model="user.name" type="text" class="browser-default">
                             </div>
                         </div>
                         <div class="row">
@@ -24,7 +24,7 @@
                                 <label for="phone">Phone</label>
                             </div>
                             <div class="input-field col l8">
-                                <input id="phone" type="tel" class="browser-default">
+                                <input id="phone" v-model="user.phone" type="tel" class="browser-default">
                             </div>
                         </div>
                         <div class="row">
@@ -32,7 +32,7 @@
                                 <label for="email">Email</label>
                             </div>
                             <div class="input-field col l8">
-                                <input id="email" type="email" class="browser-default">
+                                <input id="email" v-model="user.email" type="email" class="browser-default">
                             </div>
                         </div>
                         <div class="row">
@@ -40,7 +40,7 @@
                                 <label for="password">Password</label>
                             </div>
                             <div class="input-field col l8">
-                                <input id="password" type="password" class="browser-default">
+                                <input id="password" v-model="user.password" type="password" class="browser-default">
                             </div>
                         </div>
                         <div class="row">
@@ -48,13 +48,13 @@
                                 <label for="cPassword">Confirm Password</label>
                             </div>
                             <div class="input-field col l8">
-                                <input id="cPassword" type="password" class="browser-default">
+                                <input id="cPassword" v-model="user.password_confirmation" type="password" class="browser-default">
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col l4"></div>
                             <div class="input-field col l8">
-                                <a href="" class="btn marginRight3">Save</a>
+                                <a class="btn marginRight3" @click="registerUser()">Save</a>
                                 <a href="/auth/signin" class="btn btnBorder">Login</a>
                             </div>
                         </div>
@@ -72,13 +72,55 @@
             HeaderComponent,
         },
         data() {
-            return {};
+            return {
+                user: {
+                    email: "",
+                    password: "",
+                    password_confirmation: "",
+                    phone: "",
+                    role: 'Client',
+                    name: "",
+                },
+                registrationLoading: false
+            };
         },
         props: {},
-        data() {
-            return {};
-        },
         mounted() {},
-        methods: {},
+        methods: {
+            registerUser(){
+                this.registrationLoading = true;
+                if(this.user.email != "" && this.user.phone != "" && this.user.password != "" && this.user.password_confirmation != "" && this.user.name != ""){
+                    axios
+                    .post(`/auth/register`, this.user)
+                    .then((res) => {
+                        if(res.data.status === 200){
+                            M.toast({
+                                html: 'Registration Success! Redirecting to login page.',
+                                classes: "successNotifier",
+                            });
+                            
+                            setTimeout(function(){
+                                window.location.href = "/auth/signin";
+                            }, 3000)
+                        } else {
+                            M.toast({
+                                html: res.data.error,
+                                classes: "errorNotifier",
+                            });
+                        }
+                        this.registrationLoading = false;
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+                } else {
+                    M.toast({
+                        html: 'Please fill the form properly.',
+                        classes: "errorNotifier",
+                    });
+                    this.registrationLoading = false;
+                }
+            }
+        },
     };
 </script>

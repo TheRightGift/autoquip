@@ -9,8 +9,13 @@
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="#">Support</a></li>
                 <li><a href="#"><i class="material-icons primaryIcon">shopping_cart</i></a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#" class="waves-effect waves-light btn">Sign Up</a></li>
+                <span v-if="userLoggedIn">
+                    <li><a @click="logout()" class="waves-effect waves-light btn">Logout</a></li>
+                </span>
+                <span v-else>
+                    <li><a href="/auth/signin">Login</a></li>
+                    <li><a href="/auth/getstarted" class="waves-effect waves-light btn">Sign Up</a></li>
+                </span>
             </ul>
         </div>
     </nav>
@@ -22,9 +27,37 @@
         },
         props: {},
         data() {
-            return {};
+            return {
+                userLoggedIn: false
+            };
         },
-        mounted() {},
-        methods: {},
+        mounted() {
+            this.loggedInUser();
+        },
+        methods: {
+            logout(){
+                axios
+                .post(`/auth/logout`)
+                .then((res) => {
+                    if(res.data.status === 401){
+                        window.location.href = "/";
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            },
+            loggedInUser(){
+                axios
+                .get(`/isLoggedIn`)
+                .then((res) => {
+                    console.log(res.data)
+                    this.userLoggedIn = res.data;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            }
+        },
     };
 </script>

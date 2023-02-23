@@ -16,7 +16,7 @@
                                 <label for="emailPhone">Email/Phone</label>
                             </div>
                             <div class="input-field col l8">
-                                <input id="emailPhone" type="text" class="browser-default">
+                                <input id="emailPhone" v-model="user.email" type="text" class="browser-default">
                             </div>
                         </div>                        
                         <div class="row">
@@ -24,7 +24,7 @@
                                 <label for="password">Password</label>
                             </div>
                             <div class="input-field col l8">
-                                <input id="password" type="password" class="browser-default">
+                                <input id="password" v-model="user.password" type="password" class="browser-default">
                             </div>
                         </div>
                         <div class="row">
@@ -44,7 +44,7 @@
                         <div class="row">
                             <div class="input-field col l4"></div>
                             <div class="input-field col l8 center-align">
-                                <button class="btn col l12">Sign in</button>
+                                <button class="btn col l12" @click="loginUser()">Sign in</button>
                                 <p class="formText">Don't have an account? <a href="/auth/getstarted">Sign up</a></p>
                             </div>
                         </div>
@@ -62,13 +62,51 @@
             HeaderComponent,
         },
         data() {
-            return {};
+            return {
+                user: {
+                    email: "",
+                    password: "",
+                },
+                loginLoading: false
+            };
         },
         props: {},
-        data() {
-            return {};
-        },
         mounted() {},
-        methods: {},
+        methods: {
+            loginUser(){
+                this.loginLoading = true;
+                if(this.user.email != "" && this.user.password != ""){
+                    axios
+                    .post(`/auth/login`, this.user)
+                    .then((res) => {
+                        if(res.data.status === 200){
+                            M.toast({
+                                html: 'Success!',
+                                classes: "successNotifier",
+                            });
+                            
+                            // setTimeout(function(){
+                            window.location.href = "/dashboard";
+                            // }, 5000)
+                        } else {
+                            M.toast({
+                                html: res.data.error,
+                                classes: "errorNotifier",
+                            });
+                        }
+                        this.loginLoading = false;
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+                } else {
+                    M.toast({
+                        html: 'Please fill the form properly.',
+                        classes: "errorNotifier",
+                    });
+                    this.loginLoading = false;
+                }
+            }
+        },
     };
 </script>

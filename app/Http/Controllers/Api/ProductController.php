@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-// use App\Models\Image;
-
+use App\Http\Controllers\Controller;
 use App\Http\Services\ProductService;
 
 class ProductController extends Controller
@@ -15,15 +14,20 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ProductService $productService)
     {
-        $products = $ProductService->allProducts();
+        $products = $productService->allProducts();
         return response($products);
+    }
+
+    public function paginatedProducts()
+    {
+        return Article::with('category')->orderBy('created_at', 'desc')->paginate(20);
     }
 
     public function sort(Request $request, $sortBy)
     {
-        $products = $ProductService->sortProducts($request, $sortBy);
+        $products = $productService->sortProducts($request, $sortBy);
         return response($products);        
     }
 

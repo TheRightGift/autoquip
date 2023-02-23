@@ -170,7 +170,12 @@ nav {
 .primaryIcon {
     color: var(--primary);
 }
-
+.progress {
+    background-color: #d8dea4;
+}
+.progress .indeterminate {
+    background-color: var(--secondary);
+}
 
 /* GUEST PAGES SHARED STYLES */
 h2.sectionHead {

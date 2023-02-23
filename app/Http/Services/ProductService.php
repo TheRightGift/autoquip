@@ -1,12 +1,9 @@
 <?php
-namespace App\Http\Services\Auth;
+namespace App\Http\Services;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
-use Carbon\Carbon;
+use App\Models\Product;
 
 class ProductService {
     protected function createAndUpdateProductDataValidation(Request $request){
@@ -26,9 +23,10 @@ class ProductService {
 
 
     public function allProducts(){
-        $product = Product::with('promotionals', 'colors', 'sizes', 'categories', 'images', 'wishlists')->paginate();
-        $trashed = Product::with('promotionals', 'colors', 'sizes', 'categories', 'images', 'wishlists')->onlyTrashed()->get();
-        return response()->json(['message' => 'Products fetched successfuly', 'products' => $product, 'trashed' => $trashed]);
+        $product = Product::with('category', 'images')->orderBy('created_at', 'DESC')->get();
+        // $trashed = Product::with('promotionals', 'colors', 'sizes', 'categories', 'images', 'wishlists')->onlyTrashed()->get();
+        // return ['message' => 'Products fetched successfuly', 'products' => $product, 'trashed' => $trashed];
+        return ['status' => 200, 'message' => 'Products fetched successfuly', 'products' => $product];
     }
 
     public function sortProducts(Request $request, $sortBy){
@@ -78,7 +76,7 @@ class ProductService {
             $product = $data->$order($type, $sort)->with('promotionals', 'colors', 'sizes', 'categories', 'images', 'wishlists')->paginate();
             $trashed = $data->$order($type, $sort)->with('promotionals', 'colors', 'sizes', 'categories', 'images', 'wishlists')->onlyTrashed()->paginate();
         }
-        return response()->json(['message' => 'Products fetched successfuly', 'products' => $product, 'trashed' => $trashed]);
+        return ['status' => 200, 'message' => 'Products fetched successfuly', 'products' => $product, 'trashed' => $trashed];
         
     }
 
@@ -130,7 +128,7 @@ class ProductService {
             $result = $data->$order($type, $sort)->whereRelation($filterType, $filterType.'.id', $filter)
                         ->with('promotionals', 'colors', 'sizes', 'categories', 'images', 'wishlists')->paginate(2);
         }
-        return response()->json(['message' => 'Products fetched successfuly', 'products' => $result]);
+        return ['status' => 200, 'message' => 'Products fetched successfuly', 'products' => $result];
     }
 
     public function storeProducts(Request $request){
@@ -160,7 +158,7 @@ class ProductService {
                 ]);
             }   
             $products = Product::with('categories', 'images')->paginate();
-            return response()->json(['message' => 'New Product added.', 'products' => $products, 'status' => 1]);
+            return ['message' => 'New Product added.', 'products' => $products, 'status' => 201];
         }
     }
 
@@ -168,7 +166,7 @@ class ProductService {
         $product = Product::where('title', $title)->with('promotionals', 'colors', 'sizes', 'categories', 'images', 'wishlists')->first();
         $category = $product->categories->first()->id;
         $related_product = $product->whereRelation('categories', 'categories.id', $category)->with('promotionals', 'categories', 'colors', 'sizes', 'images')->get();
-        return response()->json(['product' => $product, 'related' => $related_product, 'message' => 'Product retrieved successfuly', 'status' => 1], 200);
+        return ['product' => $product, 'related' => $related_product, 'message' => 'Product retrieved successfuly', 'status' => 1];
     }
 
     public function updateProducts(Request $request, $id){
@@ -211,17 +209,17 @@ class ProductService {
             !empty($colors) ? $product->colors()->sync($colors) : $product->colors()->detach();
             !empty($sizes) ? $product->sizes()->sync($sizes) : $product->sizes()->detach();
 
-            return response()->json(['message' => 'Product updated successfully', 'status' => $update, 'products' => $product->get()]);
+            return ['status' => 200, 'message' => 'Product updated successfully', 'status' => $update, 'products' => $product->get()];
         }
     }
 
     public function destroyProduct($id){
         Product::where('id', $id)->delete();
-        return response()->json(['message' => 'Archived successfuly'], 204);
+        return ['status' => 204, 'message' => 'Archived successfuly'];
     }
 
     public function refreshProduct($id){
         Product::where('id', $id)->restore();
-        return response()->json(['message' => 'Unarchived successfuly'], 201);
+        return ['status' => 201, 'message' => 'Unarchived successfuly'];
     }
 }
