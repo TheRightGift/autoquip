@@ -1,6 +1,7 @@
 :root {
     --primary: #CCE00E;
     --secondary: #808000;
+    --tertiary: #555546;
     --black: #000000;
     --white: #ffffff;
 }
@@ -119,6 +120,15 @@ nav {
 .padding-5 {
     padding: 5px;
 }
+.paddingRight-2 {
+    padding-right: 2vw;
+}
+.paddingLeft-2 {
+    padding-left: 2vw;
+}
+.paddingRight-3 {
+    padding-right: 3vw;
+}
 .vHMargin-5, .row.vHMargin-5 {
     margin: 3vh 5vw;
 }
@@ -175,6 +185,13 @@ nav {
 }
 .progress .indeterminate {
     background-color: var(--secondary);
+}
+.preloader-wrapper.small {
+    width: 20px;
+    height: 20px;
+}
+.pointer {
+    cursor: pointer !important;
 }
 
 /* GUEST PAGES SHARED STYLES */

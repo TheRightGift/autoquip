@@ -1,6 +1,6 @@
 <template>
     <HeaderComponent/>
-    <div class="container paddingBottom-15 paddingTop-15">
+    <div class="container paddingBottom-15 paddingTop-15 authContainer">
         <div class="row" id="forgotPassForm">
             <div class="card">
                 <div class="card-content" v-if="viewState == 1">
@@ -15,12 +15,12 @@
                                 <label for="emailPhone">Email/Phone</label>
                             </div>
                             <div class="input-field col l12 noPaddingLeft">
-                                <input id="emailPhone" type="text" class="browser-default">
+                                <input id="emailPhone" v-model="emailPhone" type="text" class="browser-default">
                             </div>
                         </div>                        
                         
                         <div class="row">
-                            <a class="col l12 btn modal-trigger" href="#fPassmodal">Next</a>
+                            <a class="col l12 btn" @click="showFpasModal()">Next</a>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                                 <label for="password">Password</label>
                             </div>
                             <div class="input-field col l8">
-                                <input id="password" type="password" class="browser-default">
+                                <input id="password" v-model="pass" type="password" class="browser-default">
                             </div>
                         </div>
                         <div class="row">
@@ -45,13 +45,27 @@
                                 <label for="cPassword">Confirm Password</label>
                             </div>
                             <div class="input-field col l8">
-                                <input id="cPassword" type="password" class="browser-default">
+                                <input id="cPassword" v-model="cPass" type="password" class="browser-default">
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col l4"></div>
                             <div class="input-field col l8">
-                                <button class="btn col l12 modal-trigger" href="#fPassmodal">Save</button>
+                                <!--button class="btn col l12 modal-trigger" href="#fPassmodal">Save</button-->
+                                <a class="col l12 btn" @click="showFpasModal()">
+                                    <div class="preloader-wrapper small active" v-if="passResetLoading">
+                                        <div class="spinner-layer">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <span v-else>Reset Password</span>
+                                </a>
                             </div>
                         </div> 
                     </div>
@@ -93,7 +107,11 @@
         props: {},
         data() {
             return {
-                viewState: 1
+                viewState: 1,
+                emailPhone: '',
+                pass: "",
+                cPass: "",
+                passResetLoading: false
             };
         },
         mounted() {},
@@ -101,6 +119,38 @@
             changeState(num){
 
                 this.viewState = num;
+            },
+            showFpasModal(){
+                let err = 0;
+                if(this.viewState == 1){
+                    if(this.emailPhone == ""){
+                        M.toast({
+                            html: 'Please enter your phone number or email address.',
+                            classes: "errorNotifier",
+                        });
+
+                        err = 1;
+                    } 
+                } else {
+                    if(this.pass == "" || this.pass != this.cPass){
+                        M.toast({
+                            html: 'Please enter matching passwords',
+                            classes: "errorNotifier",
+                        });
+
+                        err = 1;
+                    } else {
+                        this.passResetLoading = true;
+                        err = 1;
+                    }
+                }
+
+                // no errors
+                if(err == 0){
+                    let elem = document.getElementById("fPassmodal"); 
+                    let instance = M.Modal.getInstance(elem);
+                    instance.open();
+                }
             }
         },
     };

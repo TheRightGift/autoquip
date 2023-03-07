@@ -1,7 +1,12 @@
 nav {
     background-color: #515510;
 }
-
+.authContainer {
+    width: 55% !important;
+}
+.spinner-layer {
+    border-color: var(--black);
+}
 #getStarted h1,
 #signIn h1 {
     font-size: 3rem;

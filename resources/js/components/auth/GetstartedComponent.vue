@@ -1,6 +1,6 @@
 <template>
     <HeaderComponent/>
-    <div class="container paddingBottom-15">
+    <div class="container paddingBottom-15 authContainer">
         <div class="row" id="getStarted">
             <h1>Get Started</h1>
             <p>Create an account with us to keep track of your transations.</p>
@@ -54,7 +54,20 @@
                         <div class="row">
                             <div class="input-field col l4"></div>
                             <div class="input-field col l8">
-                                <a class="btn marginRight3" @click="registerUser()">Save</a>
+                                <a class="btn marginRight3" @click="registerUser()">
+                                    <div class="preloader-wrapper small active" v-if="registrationLoading">
+                                        <div class="spinner-layer">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <span v-else>Sign Up</span>
+                                </a>
                                 <a href="/auth/signin" class="btn btnBorder">Login</a>
                             </div>
                         </div>

@@ -1,0 +1,134 @@
+#adminSideNav {
+    background-color: rgba(173, 207, 26, 0.15);
+    height: 100vh;
+    padding-top: 3vh; 
+    padding-bottom: 3vh;
+    position: fixed;
+}
+#adminSideNav a.brand {
+    font-size: 1.6rem;
+    color: var(--tertiary);
+    font-weight: 500;
+}
+.row #adminSideNav .col.nav {
+    margin-top: 15vh;
+    margin-bottom: 18vh;
+    padding: 0;
+}
+.row #adminSideNav {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#adminSideNav .nav ul li {
+    padding: 2.3vh 1.2vw;
+    cursor: pointer;
+}
+#adminSideNav .nav ul li.active {
+    background-color: rgba(173, 207, 26, 0.15);
+    border-left: 5px solid var(--primary);
+}
+#adminSideNav .nav ul li a, #adminSideNav .logout a {
+    display: flex;
+}
+#adminSideNav .nav ul li a{
+    color: #0E0E24;
+}
+#adminSideNav .nav .navTitle, #adminSideNav .logout .navTitle {
+    margin-left: 1vw;
+    width: 80%;
+}
+
+
+.row .col.l10.dashContainer {
+    padding: 2.5vh 4vw;
+    margin-left: 16.67%;
+}
+.row .col.l10.dashContainer .dashTitle p {
+    font-weight: 400;
+}
+.row .col.l10.dashContainer .row.statBoxes .col.l3 {
+    width: 24%;
+    margin-right: 1%;
+}
+.row .col.l10.dashContainer .row.statBoxes .col.l3:last-child {
+    margin-right: 0;
+}
+.row .col.l10.dashContainer .usersBox {
+    background-color: rgba(170, 141, 216, 0.25) !important;
+}
+.row .col.l10.dashContainer .ordersBox {
+    background-color: rgba(117, 30, 48, 0.2) !important;
+}
+.row .col.l10.dashContainer .enquiriesBox {
+    background-color: rgba(99, 97, 249, 0.25) !important;
+}
+.row .col.l10.dashContainer .productsBox {
+    background-color: rgba(231, 68, 68, 0.25) !important;
+}
+.row .col.l10.dashContainer .row .col.box {
+    padding: 3vw;
+    display: flex;
+    cursor: pointer;
+}
+.row .col.l10.dashContainer .row .col.box i.large {
+    font-size: 5.5rem;
+}
+.row .col.l10.dashContainer .row .col.box .boxDet {
+    margin-left: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.row .col.l10.dashContainer .row .col.box .boxDet .stats {
+    font-size: 2rem;
+}
+
+.recentOrders table thead, 
+.recentEnquires table thead, 
+.dashAnalytics table thead,
+.dashTable table thead{
+    border: 0.5px solid #A1A1B0;
+}
+.recentOrders table thead tr, 
+.recentEnquires table thead tr, 
+.dashAnalytics table thead tr,
+.dashTable table thead tr {
+    border-bottom: unset;
+}
+.recentOrders table thead .mainHeader th, 
+.recentEnquires table thead .mainHeader th, 
+.dashAnalytics table thead .mainHeader th,
+.dashTable table thead .mainHeader th {
+    padding: 4vh 3vw;
+    font-size: 1.5rem;
+    color: #555546;
+}
+.recentOrders table thead .subHeader, 
+.recentEnquires table thead .subHeader,
+.dashTable table thead .subHeader{
+    background-color: rgba(173, 207, 26, 0.1);
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+.recentOrders table thead .subHeader th, 
+.recentEnquires table thead .subHeader th,
+.dashTable table thead .subHeader th{
+    font-size: 0.8rem;
+    font-weight: 200;
+}
+.dashTable table thead .mainHeader input {
+    font-size: 0.8rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    width: 30%;
+}
+.dashTable table thead .mainHeader input::placeholder {
+    color: rgba(85, 85, 70, 0.75);  
+}
+.percent20 {
+    width: 20% !important;
+}
+.percent16_6 {
+    width: 16.6667% !important;
+}

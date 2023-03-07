@@ -28,6 +28,7 @@ import GetstartedComponent from './components/auth/GetstartedComponent.vue';
 import SigninComponent from './components/auth/SigninComponent.vue';
 import ForgotPasswordComponent from './components/auth/ForgotPasswordComponent.vue';
 import DashboardComponent from './components/auth/DashboardComponent.vue';
+import AdminDashboardComponent from './components/auth/AdminDashboardComponent.vue';
 
 // Guest components registration
 app.component('home-component', HomeComponent);
@@ -41,6 +42,7 @@ app.component('get-started-component', GetstartedComponent);
 app.component('signin-component', SigninComponent);
 app.component('forgot-password-component', ForgotPasswordComponent);
 app.component('dashboard-component', DashboardComponent);
-// 
+app.component('admin-dashboard-component', AdminDashboardComponent);
+// admin-
 
 app.mount('#app');

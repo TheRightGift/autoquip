@@ -12,21 +12,21 @@
                     </p>
                 </div>
                 <div class="col l12 center-align">
-                    <button class="btn">
+                    <a href="/products" class="btn">
                         Shop Now
-                    </button>
+                    </a>
                 </div>
             </div>
             <div class="row marginTop-15" id="search">
-                <div class="input-field col l5">
+                <!--div class="input-field col l5">
                     <select class="browser-default">
                         <option value="" selected>Select Category</option>
                         <option value="1">Option 1</option>
                         <option value="2">Option 2</option>
                         <option value="3">Option 3</option>
                     </select>
-                </div>
-                <div class="input-field col l7 prdtSearch">
+                </div-->
+                <div class="input-field col l12 prdtSearch">
                     <input placeholder="Search Products" type="search" class="browser-default padding-5 prdtSearchInput"/>
                     <button class="btn prdtSearchBtn">Search</button>
                 </div>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="col l8 viewAll">
                     <p class="right-align">
-                        <a href="#">View all <i class="material-icons">arrow_forward</i></a>
+                        <a href="/products">View all <i class="material-icons">arrow_forward</i></a>
                     </p>
                 </div>
             </div>
@@ -205,7 +205,7 @@
             </ul>
         </div>
     </div>
-    <div class="row" id="enquiry">
+    <!--div class="row" id="enquiry">
         <div class="container center-align enquiryContainer">
             <div class="marginBottom-5">
                 <h2 class="center-align">
@@ -218,7 +218,7 @@
                 </a>
             </p>
         </div>
-    </div>
+    </div-->
     <FooterComponent />
 </template>
 

@@ -1,6 +1,6 @@
 <template>
     <HeaderComponent/>
-    <div class="container paddingBottom-15">
+    <div class="container paddingBottom-15 authContainer">
         <div class="row" id="signIn">
             <h1>Welcome Back</h1>
             <p>Create an account with us to keep track of your transations.</p>
@@ -44,7 +44,20 @@
                         <div class="row">
                             <div class="input-field col l4"></div>
                             <div class="input-field col l8 center-align">
-                                <button class="btn col l12" @click="loginUser()">Sign in</button>
+                                <button class="btn col l12" @click="loginUser()">
+                                    <div class="preloader-wrapper small active" v-if="loginLoading">
+                                        <div class="spinner-layer">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <span v-else>Sign In</span>                                    
+                                </button>
                                 <p class="formText">Don't have an account? <a href="/auth/getstarted">Sign up</a></p>
                             </div>
                         </div>

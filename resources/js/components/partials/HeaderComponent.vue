@@ -1,7 +1,7 @@
 <template>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Autoquip, LLC</a>
+            <a href="/" class="brand-logo">Autoquip, LLC</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="/">Home</a></li>
                 <li><a href="/products">Products</a></li>

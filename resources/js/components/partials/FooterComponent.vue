@@ -7,7 +7,7 @@
                 </h2>
             </div>
             <p class="marginTop-2">
-                <a href="" class="btn">
+                <a href="/contact" class="btn">
                     Contact Us
                 </a>
             </p>
@@ -25,7 +25,7 @@
                 <div class="col l3">
                     <h5 class="white-text">Company</h5>
                     <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Product</a></li>
+                        <li><a class="grey-text text-lighten-3" href="/products">Products</a></li>
                         <li><a class="grey-text text-lighten-3" href="#!">Product Purchase</a></li>
                         <li><a class="grey-text text-lighten-3" href="#!">Enquiry</a></li>
                         <li><a class="grey-text text-lighten-3" href="#!">Support</a></li>
