@@ -18,6 +18,9 @@ return new class extends Migration
             $table->bigInteger('product_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
             $table->integer('qty');
+            $table->integer('unitPrice')->default(0);
+            $table->enum('deliveryStatus', ['Picked', 'Processing', 'Enroute', 'Delivered'])->default('Picked');
+            $table->enum('paid', ['Yes', 'No'])->default('No');
             $table->softDeletes();
             $table->timestamps();
 

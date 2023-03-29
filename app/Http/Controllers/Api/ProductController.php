@@ -48,9 +48,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ProductService $productService)
     {
-        $products = $ProductService->storeProducts($request);
+        $products = $productService->storeProducts($request);
         return response($products);
     }
 
@@ -60,9 +60,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($title)
+    public function show($id, ProductService $productService)
     {
-        $product = $ProductService->showProducts($title);
+        $product = $productService->showProducts($id);
         return response($product);
     }
 

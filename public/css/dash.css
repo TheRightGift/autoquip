@@ -1,39 +1,39 @@
-#adminSideNav {
+#dashSideNav {
     background-color: rgba(173, 207, 26, 0.15);
     height: 100vh;
     padding-top: 3vh; 
     padding-bottom: 3vh;
     position: fixed;
 }
-#adminSideNav a.brand {
+#dashSideNav a.brand {
     font-size: 1.6rem;
     color: var(--tertiary);
     font-weight: 500;
 }
-.row #adminSideNav .col.nav {
+.row #dashSideNav .col.nav {
     margin-top: 15vh;
     margin-bottom: 18vh;
     padding: 0;
 }
-.row #adminSideNav {
+.row #dashSideNav {
     padding-left: 0px;
     padding-right: 0px;
 }
-#adminSideNav .nav ul li {
+#dashSideNav .nav ul li {
     padding: 2.3vh 1.2vw;
     cursor: pointer;
 }
-#adminSideNav .nav ul li.active {
+#dashSideNav .nav ul li.active {
     background-color: rgba(173, 207, 26, 0.15);
     border-left: 5px solid var(--primary);
 }
-#adminSideNav .nav ul li a, #adminSideNav .logout a {
+#dashSideNav .nav ul li a, #dashSideNav .logout a {
     display: flex;
 }
-#adminSideNav .nav ul li a{
+#dashSideNav .nav ul li a{
     color: #0E0E24;
 }
-#adminSideNav .nav .navTitle, #adminSideNav .logout .navTitle {
+#dashSideNav .nav .navTitle, #dashSideNav .logout .navTitle {
     margin-left: 1vw;
     width: 80%;
 }
@@ -44,7 +44,8 @@
     margin-left: 16.67%;
 }
 .row .col.l10.dashContainer .dashTitle p {
-    font-weight: 400;
+    font-size: 0.75rem;
+    font-weight: 500;
 }
 .row .col.l10.dashContainer .row.statBoxes .col.l3 {
     width: 24%;
@@ -131,4 +132,74 @@
 }
 .percent16_6 {
     width: 16.6667% !important;
+}
+
+#addProductModal input, #addProductModal .custom-file-upload {
+    width: 100%;
+    height: 8vh;
+    border: thin solid var(--secondary);
+    border-radius: 1vh;
+    padding: 1vh 1vw;
+    text-align: center;
+}
+#addProductModal label {
+    position: static;
+}
+#addProductModal input[type="file"] {
+    display: none;
+}
+#addProductModal .custom-file-upload {
+    position: relative;
+    top: -0.7rem;
+    left: -0.1rem;
+    display: inline-block;
+    /* padding: 6px 12px; */
+    cursor: pointer;
+}
+
+
+
+/* USER DASH */
+
+/* Profile */
+tbody.userProfileTable tr {
+    border-bottom: unset;
+}
+#addProductModal .custom-file-upload .material-icons {
+    position: relative;
+    top: 1vh;
+}
+.tableDataPadding {
+    padding: 3vh 3vw 1vh;
+}
+.profileHead {
+    background-color: rgba(173, 207, 26, 0.1);
+    color: #0E0E24;
+    
+}
+.profileHead i{
+    font-size: 0.9rem;
+    position: relative;
+    top: 1vh;
+    color: rgba(85, 85, 70, 0.75);
+}
+.row .tableDataPadding .col.l12 {
+    padding: 1vh 1vw;
+}
+tbody.cartItemsTable tr td img {
+    height: 10vh;
+    margin-right: 2vw;
+}
+tbody.cartItemsTable tr td.productDet {
+    display: flex;
+    align-items: center;
+}
+tbody.cartItemsTable tr td input[type="number"] {
+    width: 4vw;
+    padding: 1vh;
+}
+tbody.cartItemsTable tr td input[type="checkbox"] {
+    opacity: unset;
+    position: static;
+    pointer-events: all;
 }

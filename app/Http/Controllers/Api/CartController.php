@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Cart;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Services\CartServices;
 
 class CartController extends Controller
 {
@@ -17,14 +19,16 @@ class CartController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function userUnpaidCartItems($userId, CartServices $cartServices)
     {
-        //
+        $cartItems = $cartServices->allUserUnpaidCartItems($userId);
+        return response($cartItems);
+    }
+
+    public function userCartItems($userId, CartServices $cartServices)
+    {
+        $cartItems = $cartServices->allUserCartItems($userId);
+        return response($cartItems);
     }
 
     /**
@@ -33,9 +37,10 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, CartServices $cartServices)
     {
-        //
+        $cart = $cartServices->storeCart($request);
+        return response($cart);
     }
 
     /**
@@ -78,8 +83,9 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy($cartId, CartServices $cartServices)
     {
-        //
+        $cart = $cartServices->destroyCart($cartId);
+        return response($cart);
     }
 }

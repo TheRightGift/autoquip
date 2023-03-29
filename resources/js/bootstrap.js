@@ -13,6 +13,9 @@ import axios from 'axios';
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.withCredentials = true;
+const _token = ('; '+document.cookie).split(`; _token=`).pop().split(';')[0];
+window.axios.defaults.headers.Authorization = `Bearer ${_token}`;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

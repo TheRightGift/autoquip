@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <AdminDashHeaderComponent  @navChanged="selectNavView"></AdminDashHeaderComponent>
+        <AdminDashHeaderComponent  @navChanged="selectNavView" userType="admin"></AdminDashHeaderComponent>
         <div class="col l10 dashContainer" v-if="viewState === 0">
             <div class="row dashTitle">
                 <p>Admin Dashboard</p>
@@ -210,6 +210,7 @@
                         <tr class="mainHeader">
                             <th colspan="7">
                                 Product List
+                                <a class="btn right modal-trigger" href="#addProductModal">Add Product</a>
                             </th>
                         </tr>
                         <tr class="subHeader">
@@ -230,6 +231,71 @@
                         
                     </tbody>
                 </table>
+
+                
+            </div>
+        </div>
+    </div>
+    <!--Add product Modal-->
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <h4>Add product</h4>
+            </div>
+            <div class="row">
+                <div class="input-field col l6">
+                    <label for="name">Product Name</label>
+                    <input id="name" v-model="product.name" type="text" class="browser-default">
+                </div>
+                <div class="input-field col l6">
+                    <label for="info">Product Info</label>
+                    <input id="info" v-model="product.info" type="text" class="browser-default">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col l6">
+                    <label for="id">Product ID</label>
+                    <input id="id" v-model="product.productId" type="text" class="browser-default">
+                </div>
+                <div class="input-field col l6">
+                    <label for="model">Product Model</label>
+                    <input id="model" v-model="product.model" type="text" class="browser-default">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col l6">
+                    <label for="price">Product Price</label>
+                    <input id="price" v-model="product.price" type="number" class="browser-default">
+                </div>
+                <div class="input-field col l6">
+                    <label>Product Image</label>
+                    <!--input class="file-path validate" type="text"-->
+
+                    <label class="custom-file-upload">
+                        <input type="file" multiple accept=".png, .jpg" @change="imgUpload"/>
+                        <i class="material-icons" v-if="product.imageUrl == null">photo</i>
+                        <span v-else>{{product.imageUrl.length}} Images</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l12">
+                    <a @click="addProduct()" class="btn">
+                        <div class="preloader-wrapper small active" v-if="loading">
+                            <div class="spinner-layer">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div><div class="gap-patch">
+                                <div class="circle"></div>
+                            </div><div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                            </div>
+                        </div>
+                        <span v-else>Save</span>
+                        
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -243,12 +309,36 @@
         },
         data() {
             return {
-                viewState: 0
+                viewState: 0,
+                product: {
+                    name: '',
+                    info: '',
+                    productId: '',
+                    model: '',
+                    price: '',
+                    imageUrl: null,
+                    category_id: 1
+                },
+                loading: false,
+                userToken: null
             };
         },
         props: {},
-        mounted() {},
+        mounted() {
+            this.getUserDetails()
+        },
         methods: {
+            getUserDetails(){
+                // userDetails
+                axios
+                .get("/userDetails")
+                .then((res) => {
+                    this.userToken = res.data.accessToken;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            },
             logout(){
                 axios
                 .post(`/auth/logout`)
@@ -263,6 +353,60 @@
             },
             selectNavView(value){
                 this.viewState = value;
+            },
+            imgUpload(e) {
+                if (!e.target.files.length) return;
+                this.product.imageUrl = e.target.files;
+            },
+            addProduct(){
+                this.loading = !this.loading;
+                let formData = new FormData();
+                $.each(this.product.imageUrl, function (key, image) {
+                    formData.append(`imageUrl[${key}]`, image);
+                });
+                formData.append("title", this.product.name);
+                formData.append("info", this.product.info);
+                formData.append("code", this.product.productId);
+                formData.append("model", this.product.model);
+                formData.append("price", this.product.price);
+                // formData.append("imageUrl", this.product.imageUrl);
+                formData.append("category_id", this.product.category_id);
+
+                axios
+                .post("/api/products", formData)
+                .then((res) => {
+                    if(res.data.status === 501){
+                        // let err = res.data.error.slice(0, chunk);
+                        M.toast({
+                            html: `${res.data.error}`,
+                            classes: "errorNotifier",
+                        });
+                    } else if(res.data.status === 201){
+                        M.toast({
+                            html: res.data.message,
+                            classes: "successNotifier",
+                        });
+
+                        this.resetAddProductForm();
+                        let elem = document.getElementById('addProductModal');
+                        var instance = M.Modal.getInstance(elem);
+                        instance.close();
+                    }                       
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            },
+            resetAddProductForm(){
+                this.product = {
+                    name: '',
+                    info: '',
+                    productId: '',
+                    model: '',
+                    price: '',
+                    imageUrl: null,
+                    category_id: 1
+                }
             }
         },
     };

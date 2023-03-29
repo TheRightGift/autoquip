@@ -50,6 +50,21 @@ nav {
 .centre {
     text-align: center;
 }
+.pointer {
+    cursor: pointer;
+}
+
+nav ul a .notify {
+    font-size: 0.5rem;
+    color: var(--white);
+    background-color: red;
+    position: absolute;
+    height: 15px;
+    line-height: 9px;
+    padding: 0.5vh 0.5vw;
+    margin-top: -6.5vh;
+    margin-left: 1vw;
+}
 /* Misc */
 .hoverable,
 .cursor {
@@ -95,6 +110,9 @@ nav {
 }
 .marginBottom-3 {
     margin-bottom: 3vh;
+}
+.marginTop-5 {
+    margin-top: 5vh;
 }
 .marginTop-10 {
     margin-top: 10vh;
@@ -193,6 +211,9 @@ nav {
 .pointer {
     cursor: pointer !important;
 }
+.tertiacryText {
+    color: var(--tertiary);
+}
 
 /* GUEST PAGES SHARED STYLES */
 h2.sectionHead {
@@ -242,6 +263,32 @@ nav {
     font-size: 1.2rem;
     height: 37px;
     line-height: 37px;
+}
+.dropdownContainer {
+    background-color: #fff;
+    margin: 0;
+    /* display: block; */
+    min-width: 100px;
+    /* overflow-y: auto; */
+    /* opacity: 0; */
+    position: absolute;
+    right: 3vw;
+    top: 70px;
+    z-index: 9999;
+    transform-origin: 0 0;
+}
+.dropdownContainer li a,.dropdownContainer li:not(.divider) {
+    padding: 14px 16px;
+    line-height: 22px;
+}
+.dropdownContainer li a {
+    color: #4a4b49;
+}
+.dropdownContainer li a i {
+    font-size: 19px;
+    position: relative;
+    top: 0.7vh;
+    margin-right: 0.3vw;
 }
 
 /* Enquiry */

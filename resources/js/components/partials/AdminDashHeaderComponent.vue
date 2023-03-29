@@ -1,10 +1,10 @@
 <template>    
-    <div class="col l2" id="adminSideNav">
+    <div class="col l2" id="dashSideNav">
         <div class="col l12 center-align">
             <a href="/" class="brand">Autoquip, LLC</a>
         </div>
 
-        <div class="col l12 nav">
+        <div class="col l12 nav" v-if="userType === 'admin'">
             <ul>
                 <li :class="navState == 0 ? 'active' : null">
                     <a @click="changeNav(0)">
@@ -51,6 +51,39 @@
             </ul>
         </div>
 
+        <div class="col l12 nav" v-if="userType === 'client'">
+            <ul>
+                <li :class="navState == 0 ? 'active' : null">
+                    <a @click="changeNav(0)">
+                        <i class="material-icons">assessment</i>
+                        <span class="navTitle">Profile</span>
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+                <li :class="navState == 1 ? 'active' : null">
+                    <a @click="changeNav(1)">
+                        <i class="material-icons">forum</i>
+                        <span class="navTitle">History</span>
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+                <li :class="navState == 2 ? 'active' : null">
+                    <a @click="changeNav(2)">
+                        <i class="material-icons">shopping_cart</i>
+                        <span class="navTitle">Cart</span>
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+                <li :class="navState == 4 ? 'active' : null">
+                    <a @click="changeNav(4)">
+                        <i class="material-icons">forum</i>
+                        <span class="navTitle">Enquiries</span>
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
         <div class="col l12 logout">
             <a @click="logout()" class="red-text pointer">
                 <i class="material-icons">exit_to_app</i>
@@ -67,7 +100,9 @@
                 navState: 0
             };
         },
-        props: {},
+        props: {
+            userType: String,
+        },
         mounted() {},
         methods: {
             changeNav(num) {

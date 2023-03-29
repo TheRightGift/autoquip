@@ -17,9 +17,10 @@
             <home-component></home-component>
         </div>
         
-        <script src="{{ asset('js/app.js') }}"></script>
+        
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('js/materialize.min.js') }}"></script>
         <script src="{{ asset('js/autoquip.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

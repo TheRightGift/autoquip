@@ -8,9 +8,17 @@
                 <li><a href="#">Enquiry</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="#">Support</a></li>
-                <li><a href="#"><i class="material-icons primaryIcon">shopping_cart</i></a></li>
-                <span v-if="userLoggedIn">
-                    <li><a @click="logout()" class="waves-effect waves-light btn">Logout</a></li>
+                <li>
+                    <a href="#">
+                        <i class="material-icons primaryIcon">shopping_cart</i>
+                        <span class="notify" v-if="cartItemsLen > 0">{{cartItemsLen}}</span>
+                    </a>
+                </li>
+                <span v-if="user != null">
+                    <!-- Dropdown Trigger -->
+                    <li>
+                        <a class="dropdown-trigger" href="#!" @click="showDropDown()">{{user.name}}<i class="material-icons right">arrow_drop_down</i></a>
+                    </li>
                 </span>
                 <span v-else>
                     <li><a href="/auth/signin">Login</a></li>
@@ -19,20 +27,35 @@
             </ul>
         </div>
     </nav>
+    <!-- Dropdown Structure -->
+    <ul class="dropdownContainer" v-if="user != null && showDropDownState">
+        <li><a href="/dashboard"><i class="material-icons">tune</i>Dashboard</a></li>
+        <li class="divider"></li>
+        <li><a @click="logout()" href="#!"><i class="material-icons">exit_to_app</i>Logout</a></li>
+    </ul>
 </template>
 <script>    
     export default {
         props: {
             // type: String,
         },
-        props: {},
+        props: ['cartItemsNum'],
+        watch: { 
+            cartItemsNum: function(newVal, oldVal) { // watch it
+                this.cartItemsLen += 1;
+            }
+        },
         data() {
             return {
-                userLoggedIn: false
+                userLoggedIn: false,
+                user: null,
+                instance: null,
+                showDropDownState: false,
+                cartItemsLen: 0
             };
         },
         mounted() {
-            this.loggedInUser();
+            this.getUserDetails();
         },
         methods: {
             logout(){
@@ -47,17 +70,36 @@
                     console.log(err);
                 });
             },
-            loggedInUser(){
+            showDropDown(){
+                this.showDropDownState = !this.showDropDownState;
+            },
+            getUserUnpaidCartItems(){
                 axios
-                .get(`/isLoggedIn`)
+                .get(`/api/userUnpaidCartItems/${this.user.id}`)
                 .then((res) => {
-                    console.log(res.data)
-                    this.userLoggedIn = res.data;
+                    if(res.data.cartItems.length > 0){
+                        this.cartItemsLen = res.data.cartItems.length;
+                    }
                 })
                 .catch((err) => {
                     console.log(err);
                 });
-            }
+            },
+            getUserDetails(){
+                // userDetails
+                axios
+                .get("/userDetails")
+                .then((res) => {
+                    if(typeof res.data === 'object'){
+                        this.user = res.data;
+
+                        this.getUserUnpaidCartItems();
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            },
         },
     };
 </script>

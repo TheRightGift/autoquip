@@ -67,13 +67,15 @@
                     </p>
                 </div>
                 <div class="col l3" v-for="prdt in fourProducts" v-else>
-                    <figure>
-                        <img :src="'./img/'+prdt.images[0].url" class="responsive-img" alt="Semi Conductor Plate">
-                        <figcaption>
-                            {{prdt.title}}<br/>
-                            {{prdt.code}}
-                        </figcaption>
-                    </figure>
+                    <a :href="'/singleProduct/'+prdt.id">
+                        <figure>
+                            <img :src="prdt.images[0].url" class="responsive-img" alt="Semi Conductor Plate">
+                            <figcaption>
+                                {{prdt.title}}<br/>
+                                {{prdt.code}}
+                            </figcaption>
+                        </figure>
+                    </a>
                 </div>
                 
             </div>

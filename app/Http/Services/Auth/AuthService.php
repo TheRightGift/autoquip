@@ -74,7 +74,7 @@ class AuthService {
         }
         $accessToken = auth()->user()->createToken('accessToken')->accessToken;
         $user = User::find(auth()->user()->id);
-        // $user->visits = $user->visits + 1;
+        
         $user->accessToken = $accessToken;
         $user->save();
         return ['status' => 200, 'user' => auth()->user(), 'access_token' => $accessToken];

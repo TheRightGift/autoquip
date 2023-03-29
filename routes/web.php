@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 // GUEST
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/products', [App\Http\Controllers\HomeController::class, 'products'])->name('products');
-Route::get('/singleProduct', [App\Http\Controllers\HomeController::class, 'singleProduct'])->name('singleProduct');
+Route::get('/singleProduct/{product_id}', [App\Http\Controllers\HomeController::class, 'singleProduct'])->name('singleProduct');
 Route::get('/repairs', [App\Http\Controllers\HomeController::class, 'repairs'])->name('repairs');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 Route::get('/warehouse', [App\Http\Controllers\HomeController::class, 'warehouse'])->name('warehouse');
@@ -34,4 +34,5 @@ Route::prefix('auth')->group(function () {
 // Dashboard
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/isLoggedIn', [App\Http\Controllers\HomeController::class, 'isLoggedIn'])->name('isLoggedIn');
-// 
+Route::get('/userDetails', [App\Http\Controllers\HomeController::class, 'userDetails'])->name('userDetails');
+// userDetails

@@ -13,8 +13,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body>
-        <div id="app">       
-            <single-products-component></single-products-component>
+        <div id="app">  
+            <!-- {{gettype($productId)}} -->
+            <single-products-component product="{{ $productId ?? '' }}"></single-products-component>
         </div>
         
         <script src="{{ asset('js/app.js') }}"></script>

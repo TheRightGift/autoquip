@@ -10,12 +10,13 @@ class ProductService {
 		$validator = Validator::make($request->all(), [
             'title' => 'required|string|max:75',
             'category_id' => 'required',
-            'desc' => 'nullable|string',
-            'amount' => 'required|integer',
+            'code' => 'required',
+            'model' => 'required',
+            'info' => 'nullable|string',
             'category_id' => 'nullable|integer',
-            'images.*' => 'image|mimes:jpg,jpeg,png|max:500',
-            'images' => 'required',
-            'shipping_price' => 'required|integer'
+            'imageUrl.*' => 'image|mimes:jpg,jpeg,png|max:500|dimensions:ratio=1/2',
+            'imageUrl' => 'required',
+            // 'shipping_price' => 'required|integer'
             // 'recommended' => 'nullable',
 		]);
         return $validator;
@@ -142,13 +143,13 @@ class ProductService {
                 'recommended' => $request->recommended,
                 'desc' => $request->desc,
                 'amount' => $request->amount,
+                'code' => $request->code,
                 'category_id' => $request->category_id,
                 'created_at' => now(),
             ]);
-            
-            $product->categories()->sync([$request->category_id]);
 
-            $images = $request->file('images');
+            $images = $request->file('imageUrl');
+            
             foreach ($images as $key => $value) {
                 $name = $value->getClientOriginalName();
                 $value->move(public_path('/img/products/'), $name);
@@ -157,16 +158,17 @@ class ProductService {
                     'product_id' => $product['id'],
                 ]);
             }   
-            $products = Product::with('categories', 'images')->paginate();
+            $products = Product::with('category', 'images')->paginate();
             return ['message' => 'New Product added.', 'products' => $products, 'status' => 201];
         }
     }
 
-    public function showProducts($title){
-        $product = Product::where('title', $title)->with('promotionals', 'colors', 'sizes', 'categories', 'images', 'wishlists')->first();
-        $category = $product->categories->first()->id;
-        $related_product = $product->whereRelation('categories', 'categories.id', $category)->with('promotionals', 'categories', 'colors', 'sizes', 'images')->get();
-        return ['product' => $product, 'related' => $related_product, 'message' => 'Product retrieved successfuly', 'status' => 1];
+    public function showProducts($id){
+        $product = Product::where('id', $id)->with('images', 'category')->first();
+        // $category = $product->category->first()->id;
+        // $related_product = $product->whereRelation('category', 'category.id', $category)->with('promotionals', 'category', 'colors', 'sizes', 'images')->get();
+        $related_product = '';
+        return ['product' => $product, 'related' => $related_product, 'message' => 'Product retrieved successfuly', 'status' => 200];
     }
 
     public function updateProducts(Request $request, $id){
